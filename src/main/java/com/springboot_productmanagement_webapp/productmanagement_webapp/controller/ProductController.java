@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -51,4 +52,18 @@ public class ProductController {
         return "redirect:/";
     }
 
+    @GetMapping("/products/edit/{id}")
+    public String edit(Model model, @PathVariable("id") String id){
+        log.info("product to edit is "+id);
+        model.addAttribute("product",productRepository.findById(id));
+        return "add";
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String delete(@PathVariable("id") String id){
+        log.info("Product with id "+id+" deleted !!!");
+        productRepository.deleteById(id);
+        log.info("Product deleted");
+        return "redirect:/products";
+    }
 }
