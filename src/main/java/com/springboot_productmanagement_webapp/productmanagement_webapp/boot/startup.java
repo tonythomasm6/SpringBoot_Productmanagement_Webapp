@@ -30,16 +30,16 @@ public class startup implements CommandLineRunner { // Implements commandline ru
         p.setDescription("Dell top tier laptop");
         p.setPrice(3000);
 try {
-    productRepository.save(p);
-    log.info("Product p saved !!!");
+    //productRepository.save(p);
+    //log.info("Product p saved !!!");
 }
 catch(Exception e){
     log.info("Exception caught on saving product :"+e);
 }
         //Saving second product
  try {
-     productRepository.save(new Product("Nikon D500", "Camera", "DSLR camera", 1500));
-     log.info("Second product saved !!!");
+    // productRepository.save(new Product("Nikon D500", "Camera", "DSLR camera", 1500));
+     //log.info("Second product saved !!!");
  }
  catch(Exception e){
      log.info("Exception caught on saving product 2 "+e);
